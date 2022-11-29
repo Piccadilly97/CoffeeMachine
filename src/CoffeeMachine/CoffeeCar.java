@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class CoffeeCar {
 
     public static void main(String[] args) {
-        System.out.println("*******************************************************");
+        System.out.println("-------------------------------------------------------");
         System.out.println("Здравствуйте, это кофемашина построенная на языке Java");
-        System.out.println("*******************************************************");
+        System.out.println("-------------------------------------------------------");
         menu();
     }
 
@@ -79,6 +79,7 @@ public class CoffeeCar {
         String[] coffeeList = {"КАПУЧИНО", " ЛАТТЕ", " ЭСПРЕССО"};
         String str = String.join(",", coffeeList);
         String print = "";
+        //переменная для статистики
         String orderHistory = " ";
         System.out.println("Какой кофе вы хотите?\nУ нас есть: " + str);
         String input = scanner1.next().toUpperCase();
@@ -252,7 +253,9 @@ public class CoffeeCar {
             System.out.println(print + volumeOut + "в колличестве " + num + " штук");
             System.out.println(warning);
         }
+        //Statistic operation
         String ordersOutput =":" + " " + num + orderHistory;
+
         //STORAGE INFO
         System.out.println(b.storageOutput());
         AdminMenu.statistics(ordersOutput);

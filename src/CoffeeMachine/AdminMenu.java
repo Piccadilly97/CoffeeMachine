@@ -48,13 +48,13 @@ public class AdminMenu {
     //метода для статистики заказов
     static int orderNum = 1;
     static ArrayList<String> orders = new ArrayList<>();
-
     public static void statistics(String orderInfo) {
         String orderText = "Заказ №";
         orders.add(orderText + orderNum + orderInfo);
         orderNum += 1;
     }
 
+    //МЕТОД ДЛЯ ПОКАЗА СТАТИСТИКИ
     public static void statisticsOut () {
         for (String orderOut:orders) {
             System.out.println(orderOut);
