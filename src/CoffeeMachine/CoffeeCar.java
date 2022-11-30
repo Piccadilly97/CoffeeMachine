@@ -199,6 +199,7 @@ public class CoffeeCar {
         //SUGAR
         System.out.println("Сколько сахара вам положить?");
         int sugarNum = scanner1.nextInt();
+
         if (sugarNum > -1) {
             sugarResult += sugarNum;
             orderHistory += " " + "," + sugarNum + " сахар(а)";

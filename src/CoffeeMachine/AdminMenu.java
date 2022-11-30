@@ -12,20 +12,20 @@ public class AdminMenu {
         int y = 0;
         while (y < 1) {
             System.out.println("Нажмите:\n1-меню поставок\n2-переход в кофемашину\n3-просмотр склада\n4-меню статистики");
-            int input1 = scanner.nextInt();
-            if (input1 == 1) {
+            String input1 = scanner.next();
+            if (input1.equals("1")) {
                 c.shipment();
                 break;
             }
-            if (input1 == 2) {
+            if (input1.equals("2")) {
                 CoffeeCar.menu();
                 break;
             }
-            if (input1 == 3) {
+            if (input1.equals("3")) {
                 System.out.println(c.storageOutput() + "\n");
                 Admin();
             }
-            if(input1 == 4) {
+            if(input1.equals("4")) {
                 int z = 0;
                 while (z < 2) {
                     System.out.println("\nНажмите:\n1-история заказов\n2-детализация затрат\n3-общие затраты\n4-вся статистика\n5-выход в меню");
@@ -53,13 +53,13 @@ public class AdminMenu {
             else {
                 System.out.println("Кажется вы допустили ошибку, введите снова или выйдете в главное меню");
                 System.out.println("Нажмите:\n1-вход в меню администрации\n2-выход в главное меню кофейни");
-                int input2 = scanner.nextInt();
+                String input2 = scanner.next();
                 int x = 0;
                 while (x < 3) {
-                    if (input2 == 1) {
+                    if (input2.equals("1")) {
                         Admin();
                     }
-                    if (input2 == 2) {
+                    if (input2.equals("2")) {
                         CoffeeCar.menu();
                         break;
                     }

@@ -68,7 +68,6 @@ import java.util.Scanner;
                 }
             }
         }
-
         //метода для вывода остатков склада
         public String storageOutput() {
             String milkStorage = "На складе:\nМолока: " + getMilk();
