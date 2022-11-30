@@ -264,6 +264,7 @@ public class CoffeeCar {
         System.out.println(b.storageOutput());
         AdminMenu.statistics(ordersOutput);
         AdminMenu.storageStatistic(spentGrains, spentMilk, spentSugar);
+        AdminMenu.totalCosts(grainsResult, milkResult, sugarResult);
         repeatOrder();
     }
     public void repeatOrder () {
