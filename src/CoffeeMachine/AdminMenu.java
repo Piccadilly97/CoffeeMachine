@@ -23,9 +23,11 @@ public class AdminMenu {
             }
             if (input1 == 3) {
                 System.out.println(c.storageOutput() + "\n");
+                Admin();
             }
             if(input1 == 4) {
                 statisticsOut();
+                storageStatisticOutput();
             }
             else {
                 System.out.println("Кажется вы допустили ошибку, введите снова или выйдете в главное меню");
@@ -34,7 +36,7 @@ public class AdminMenu {
                 int x = 0;
                 while (x < 3) {
                     if (input2 == 1) {
-                        x = 3;
+                        Admin();
                     }
                     if (input2 == 2) {
                         CoffeeCar.menu();
@@ -46,7 +48,7 @@ public class AdminMenu {
     }
 
     //метода для статистики заказов
-    static int orderNum = 1;
+    private static int orderNum = 1;
     static ArrayList<String> orders = new ArrayList<>();
     public static void statistics(String orderInfo) {
         String orderText = "Заказ №";
@@ -58,6 +60,22 @@ public class AdminMenu {
     public static void statisticsOut () {
         for (String orderOut:orders) {
             System.out.println(orderOut);
+        }
+    }
+     //МЕТОД ДЛЯ ЗАПОЛНЕНИЯ ЗАТРАТ
+       static ArrayList<String> usedProducts = new ArrayList<>();
+    public static void storageStatistic (String spentGrains, String spentMilk, String spentSugar) {
+        String txt = "Наши затраты на заказ номер №";
+        orderNum -=1;
+        usedProducts.add(txt + orderNum + spentGrains + spentMilk + spentSugar);
+        orderNum++;
+    }
+
+    //метод для показа затрат
+    public static void storageStatisticOutput () {
+        System.out.println("Использованные продукты:");
+        for (String usedProductOut:usedProducts) {
+            System.out.println(usedProductOut);
         }
     }
 }

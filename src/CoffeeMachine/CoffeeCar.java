@@ -256,9 +256,14 @@ public class CoffeeCar {
         //Statistic operation
         String ordersOutput =":" + " " + num + orderHistory;
 
+        String spentGrains = " зерно:" + grainsResult;
+        String spentMilk = " молоко:" + milkResult;
+        String spentSugar = " сахар(а):" + sugarResult;
+
         //STORAGE INFO
         System.out.println(b.storageOutput());
         AdminMenu.statistics(ordersOutput);
+        AdminMenu.storageStatistic(spentGrains, spentMilk, spentSugar);
         repeatOrder();
     }
     public void repeatOrder () {

@@ -49,7 +49,7 @@ import java.util.Scanner;
             System.out.println(getSugar());
             int z = 0;
             while (z < 3) {
-                System.out.println("\nНажмите:\n1-меню поставок\n2-просмотр продуктов на складе\n3-переход в кофемашину");
+                System.out.println("\nНажмите:\n1-меню поставок\n2-просмотр продуктов на складе\n3-переход в кофемашину\n4-Меню администрирования");
                 int inShipment = scanner1.nextInt();
                 if (inShipment == 1) {
                     shipment();
@@ -62,6 +62,9 @@ import java.util.Scanner;
                     CoffeeCar coffee = new CoffeeCar();
                     coffee.CoffeeMachine();
                     z = 3;
+                }
+                if (inShipment == 4) {
+                    AdminMenu.Admin();
                 }
             }
         }
