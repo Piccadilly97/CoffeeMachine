@@ -37,16 +37,13 @@ import java.util.Scanner;
             System.out.println("Добрый день, босс, сколько продуктов пришло на склад?");
             System.out.println("Введите колличество зёрен которые нужно загрузить на склад");
             setGrains(scanner1.nextInt());
-            System.out.println(getGrains());
 
 
             System.out.println("Введите колличество молока, которое нужно загрузить на склад");
             setMilk(scanner1.nextInt());
-            System.out.println(getMilk());
 
             System.out.println("Введите колличество сахара, которое нужно загрузить на склад");
             setSugar(scanner1.nextInt());
-            System.out.println(getSugar());
             int z = 0;
             while (z < 3) {
                 System.out.println("\nНажмите:\n1-меню поставок\n2-просмотр продуктов на складе\n3-переход в кофемашину\n4-Меню администрирования");

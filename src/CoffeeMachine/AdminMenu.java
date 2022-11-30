@@ -89,7 +89,7 @@ public class AdminMenu {
      //МЕТОД ДЛЯ ЗАПОЛНЕНИЯ ЗАТРАТ
        static ArrayList<String> usedProducts = new ArrayList<>();
     public static void storageStatistic (String spentGrains, String spentMilk, String spentSugar) {
-        String txt = "Наши затраты на заказ номер №";
+        String txt = "Заказ номер №";
         orderNum -= 1;
         usedProducts.add(txt + orderNum + spentGrains + spentMilk + spentSugar);
         orderNum++;
