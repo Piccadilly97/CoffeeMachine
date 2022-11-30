@@ -79,7 +79,9 @@ public class AdminMenu {
 
     //МЕТОД ДЛЯ ПОКАЗА ЗАКАЗОВ
     public static void statisticsOut () {
-        System.out.println("");
+       if(orders.isEmpty()) {
+           System.out.println("Пока что заказов не было, скорее переходите в кофемашину");
+       }
         for (String orderOut:orders) {
             System.out.println(orderOut);
         }
@@ -96,6 +98,9 @@ public class AdminMenu {
     //МЕТОДА ДЛЯ ПОКАЗА ЗАТРАТ НА КАЖДЫЙ ЗАКАЗ
     public static void storageStatisticOutput () {
         System.out.println("\nИспользованные продукты:");
+        if (orders.isEmpty()) {
+            System.out.println("У нас не было затарат на заказы");
+        }
         for (String usedProductOut:usedProducts) {
             System.out.println(usedProductOut);
         }
@@ -111,6 +116,9 @@ public class AdminMenu {
     }
 //МЕТОД ДЛЯ ПОКАЗА СУММЫ ВСЕХ ЗАТРАТ
     public static void costsOut () {
+        if (totalCostsMilk == 0||totalCostsSugar == 0||totalCostsGrains == 0) {
+            System.out.println("\nМы не тратили продукты за последний период");
+        }
         System.out.println("\nВсего потраченно:\nЗерна: " + totalCostsGrains + "\nМолока: " + totalCostsMilk + "\nСахара: " + totalCostsSugar);
     }
 }
