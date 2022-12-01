@@ -1,7 +1,6 @@
 package CoffeeMachine;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Scanner;
 
 public class AdminMenu {
@@ -9,8 +8,7 @@ public class AdminMenu {
         Scanner scanner = new Scanner(System.in);
         CoffeStorage c = new CoffeStorage();
         System.out.println("Добро пожаловать в меню для администрирования кофейни");
-        int y = 0;
-        while (y < 1) {
+        while (true) {
             System.out.println("Нажмите:\n1-меню поставок\n2-переход в кофемашину\n3-просмотр склада\n4-меню статистики");
             String input1 = scanner.next();
             if (input1.equals("1")) {
@@ -26,9 +24,8 @@ public class AdminMenu {
                 Admin();
             }
             if(input1.equals("4")) {
-                int z = 0;
-                while (z < 2) {
-                    System.out.println("\nНажмите:\n1-история заказов\n2-детализация затрат\n3-общие затраты\n4-вся статистика\n5-выход в меню");
+                while (true) {
+                    System.out.println("\nНажмите:\n1-история заказов\n2-детализация затрат\n3-общие затраты\n4-выручка\n5-вся статистика\n6-выход в меню");
                     Scanner scanner1 = new Scanner(System.in);
                     String sc1 = scanner1.next();
                     if (sc1.equals("1")) {
@@ -40,28 +37,34 @@ public class AdminMenu {
                     if (sc1.equals("3")) {
                         costsOut();
                     }
-                    if(sc1.equals("4")) {
+                    if (sc1.equals("4")) {
+                        boxOfficePrint();
+                    }
+                    if(sc1.equals("5")) {
                         statisticsOut();
                         storageStatisticOutput();
+                        boxOfficePrint();
                         costsOut();
                     }
-                    if (sc1.equals("5")) {
+                    if (sc1.equals("6")) {
                         break;
                     }
                 }
             }
             else {
                 System.out.println("Кажется вы допустили ошибку, введите снова или выйдете в главное меню");
-                System.out.println("Нажмите:\n1-вход в меню администрации\n2-выход в главное меню кофейни");
-                String input2 = scanner.next();
-                int x = 0;
-                while (x < 3) {
+                while (true) {
+                    System.out.println("Нажмите:\n1-вход в меню администрации\n2-выход в главное меню кофейни");
+                    String input2 = scanner.next();
                     if (input2.equals("1")) {
                         Admin();
                     }
                     if (input2.equals("2")) {
                         CoffeeCar.menu();
                         break;
+                    }
+                    else {
+                        System.out.println("Вы допустили ошибку, введите снова");
                     }
                 }
             }
@@ -120,6 +123,34 @@ public class AdminMenu {
             System.out.println("\nМы не тратили продукты за последний период");
         }
         System.out.println("\nВсего потраченно:\nЗерна: " + totalCostsGrains + "\nМолока: " + totalCostsMilk + "\nСахара: " + totalCostsSugar);
+    }
+
+    //метод для ведения отчетности выручки
+    static ArrayList<String> boxOffice = new ArrayList<>();
+    static int totalPriceCash;
+    static int totalPriceCard;
+    public static void boxOffice(double price, boolean cardOrCash) {
+    String strMoney = "Выручка за заказ №";
+    orderNum--;
+        if(cardOrCash) {
+            boxOffice.add(strMoney + orderNum + " " + price + " безналичными");
+        totalPriceCard+=price;
+    }
+    if (!cardOrCash) {
+        boxOffice.add(strMoney + orderNum + " " + price + " наличными");
+        totalPriceCash+=price;
+    }
+    orderNum+=1;
+    }
+//метод для вывода статистики выручки 
+    public static void boxOfficePrint () {
+        System.out.println("\n");
+        for (String boxList:boxOffice) {
+            System.out.println(boxList);
+        }
+        System.out.println();
+        System.out.println("Мы выручили безналичными: " + totalPriceCard);
+        System.out.println("Наличными: " + totalPriceCash);
     }
 }
 

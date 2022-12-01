@@ -1,6 +1,5 @@
 package CoffeeMachine;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -21,16 +20,13 @@ public class CoffeeCar {
         if(d.getGrains() == 0||d.getMilk() == 0||d.getSugar() == 0) {
             Scanner sc1 = new Scanner(System.in);
             System.out.println("К сожалению склад нашей кофемашины пуст, поэтому сделать заказ не получиться\nЕсли вы являетесь админом, то введите пароль");
-           int v = 0;
-            while (v < 1) {
-                int storage = sc1.nextInt();
-                if (storage == 1234) {
+            while (true) {
+                String storage = sc1.next();
+                if (storage.equals("1234")) {
                     AdminMenu.Admin();
-                    v=1;
                     return;
                 } else {
                     System.out.println("Введите пароль снова");
-                    v=0;
                 }
             }
         }
@@ -55,7 +51,6 @@ public class CoffeeCar {
                         x = x + 1;
                     }
                     if (menu1 == 2) {
-                        x = x + 3;
                         c.CoffeeMachine();
                         return;
                     }
@@ -81,17 +76,19 @@ public class CoffeeCar {
         String print = "";
         //переменная для статистики
         String orderHistory = " ";
+        double price = 0;
         System.out.println("Какой кофе вы хотите?\nУ нас есть: " + str);
         String input = scanner1.next().toUpperCase();
         switch (input) {
-            case "ЛАТТЕ":
+            case "ЛАТТЕ" -> {
                 print = "Вот ваш: Латте";
                 grainsResult += 1;
                 milkResult += 2;
                 orderHistory = " Латте ";
-                break;
-                //ошибочный набор слова латте
-            case "KFNNT":
+                price = 150;
+            }
+            //ошибочный набор слова латте
+            case "KFNNT" -> {
                 System.out.println("Вы имели ввиду Латте?\nНажмите 1 если да, и 2 если нет");
                 String eror = Scanner1.next();
                 if (eror.equals("1")) {
@@ -99,21 +96,21 @@ public class CoffeeCar {
                     grainsResult += 1;
                     milkResult += 2;
                     orderHistory = " Латте ";
-                    break;
-                }
-                else {
+                    price = 150;
+                } else {
                     System.out.println("Попробуйте выбрать ваш кофе сначала");
                     CoffeeMachine();
-                    break;
                 }
-            case "КАПУЧИНО":
+            }
+            case "КАПУЧИНО" -> {
                 print = "Вот ваш: Капучино";
                 grainsResult += 2;
                 milkResult += 1;
                 orderHistory = " Капучино ";
-                break;
-                //ошибочный набор слова капучино
-            case "RFGEXBYJ":
+                price = 140;
+            }
+            //ошибочный набор слова капучино
+            case "RFGEXBYJ" -> {
                 System.out.println("Вы имели ввиду Капучино?\nНажмите 1 если да, и 2 если нет");
                 String eror2 = scanner1.next();
                 if (eror2.equals("1")) {
@@ -121,34 +118,33 @@ public class CoffeeCar {
                     grainsResult += 2;
                     milkResult += 1;
                     orderHistory = " Капучино ";
-                    break;
-                }
-                else {
+                    price = 140;
+                } else {
                     System.out.println("Попробуйте выбрать ваш кофе сначала");
                     CoffeeMachine();
-                    break;
                 }
-            case "ЭСПРЕССО":
+            }
+            case "ЭСПРЕССО" -> {
                 print = "Вот ваш: Эспрессо";
                 grainsResult += 3;
                 orderHistory = " Эспрессо ";
-                break;
-                //ошибочный набор слова эспрессо
-            case "'CGHTCCJ" :
+                price = 130;
+            }
+            //ошибочный набор слова эспрессо
+            case "'CGHTCCJ" -> {
                 System.out.println("Вы имели ввиду Эспрессо?\nНажмите 1 если да и 2 если нет");
                 String eror3 = scanner1.next();
                 if (eror3.equals("1")) {
                     print = "Вот ваш: Эспрессо";
                     grainsResult += 3;
                     orderHistory = " Эспрессо ";
-                    break;
-                }
-                else {
+                    price = 130;
+                } else {
                     System.out.println("Попробуйте выбрать ваш кофе сначала");
                     CoffeeMachine();
-                    break;
                 }
-            default:
+            }
+            default -> {
                 System.out.println("Увы, такого кофе у нас нету:(((");
                 System.out.println("Вы можете выбрать ваш кофе снова, для этого нажмите 1");
                 System.out.println("Нажмите 2 для того что бы выйти из программы");
@@ -159,32 +155,35 @@ public class CoffeeCar {
                 } else {
                     exit();
                 }
+            }
         }
         //VOLUME
         int[] volume = {200, 300, 400};
-        String volumeStr = Arrays.toString(volume).replaceAll("\\[|\\]", "");
+        String volumeStr = Arrays.toString(volume).replaceAll("[\\[\\]]", "");
         System.out.println("Какой объём кофе вы желаете?");
         System.out.println("У нас есть: " + volumeStr + " миллилитров");
         String volumeOut = "";
         String volumeIn = scanner2.next();
         switch (volumeIn) {
-            case "200":
+            case "200" -> {
                 volumeOut = ", объёмом 200 миллилитров ";
                 orderHistory += "200 мл";
-                break;
-            case "300":
+            }
+            case "300" -> {
                 volumeOut = ", объёмом 300 миллилитров ";
                 grainsResult = grainsResult * 1.5;
                 milkResult = milkResult * 1.5;
                 orderHistory += "300 мл";
-                break;
-            case "400":
+                price = price * 1.5;
+            }
+            case "400" -> {
                 volumeOut = ", объёмом 400 миллилитров ";
                 grainsResult = grainsResult * 2;
                 milkResult = milkResult * 2;
                 orderHistory += "400 мил";
-                break;
-            default:
+                price = price * 1.7;
+            }
+            default -> {
                 System.out.println("Кажется, такого объёма у нас нету((");
                 System.out.println("Вы можете выбрать ваш кофе снова, для этого нажмите 1");
                 System.out.println("Нажмите 2 для того что бы выйти из программы");
@@ -195,6 +194,7 @@ public class CoffeeCar {
                 } else {
                     exit();
                 }
+            }
         }
         //SUGAR
         System.out.println("Сколько сахара вам положить?");
@@ -240,6 +240,28 @@ public class CoffeeCar {
                 exit();
             }
         }
+        //подсчитываем цену
+        Scanner sc1 = new Scanner(System.in);
+        price = price * num;
+        boolean cardOfCash;
+        System.out.println("Цена вашего кофе " + price + " рублей");
+        while (true) {
+            System.out.println("Как вам будет удобнее платить?\nНажмите:\n1-картой\n2-наличными");
+            String money = sc1.next();
+            if (money.equals("1")) {
+                System.out.println("Приложите пожалуйста карту здесь");
+                cardOfCash = true;
+                break;
+            }
+            if (money.equals("2")) {
+                System.out.println("Спасибо за оплату");
+                cardOfCash = false;
+                break;
+            } else {
+                System.out.println("Кожется вы допустили ошибку, выберите способ оплаты заново");
+            }
+        }
+
         //storage operation
         b.setGrains(b.getGrains() - b.getGrains() - grainsResult);
         b.setMilk(b.getMilk() - b.getMilk() - milkResult);
@@ -256,7 +278,6 @@ public class CoffeeCar {
         }
         //Statistic operation
         String ordersOutput =":" + " " + num + orderHistory;
-
         String spentGrains = " зерно:" + grainsResult;
         String spentMilk = " молоко:" + milkResult;
         String spentSugar = " сахар(а):" + sugarResult;
@@ -266,6 +287,8 @@ public class CoffeeCar {
         AdminMenu.statistics(ordersOutput);
         AdminMenu.storageStatistic(spentGrains, spentMilk, spentSugar);
         AdminMenu.totalCosts(grainsResult, milkResult, sugarResult);
+        AdminMenu.boxOffice(price, cardOfCash);
+
         repeatOrder();
     }
     public void repeatOrder () {
