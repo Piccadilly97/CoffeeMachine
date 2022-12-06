@@ -1,7 +1,7 @@
 package CoffeeMachine;
 
 import java.util.Scanner;
-    public class CoffeStorage {
+    public class CoffeeStorage {
         private static double grains;
 
         public void setGrains(double grainsLoad) {
@@ -57,11 +57,11 @@ import java.util.Scanner;
                 }
                 if (inShipment == 3) {
                     CoffeeCar coffee = new CoffeeCar();
-                    coffee.CoffeeMachine();
+                    coffee.coffeeSelections();
                     z = 3;
                 }
                 if (inShipment == 4) {
-                    AdminMenu.Admin();
+                    AdminMenu.AdminMenu();
                 }
             }
         }
